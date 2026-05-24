@@ -32,9 +32,9 @@ export default function SocialFeed() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
-        className="absolute inset-0 z-10 pt-12 pb-32 overflow-y-auto bg-bg-primary/80 backdrop-blur-md"
+        className="absolute inset-0 z-10 pb-32 overflow-y-auto bg-bg-primary/80 backdrop-blur-md"
       >
-        <div className="sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-20 border-b border-border-subtle pt-4 px-4 pb-0 mb-4">
+        <div className="sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-30 border-b border-border-subtle pt-16 px-4 pb-0 mb-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]">
           <h2 className="text-2xl font-bold text-text-primary mb-4 text-center">Pulse</h2>
           <div className="flex w-full justify-between relative">
             <button 
