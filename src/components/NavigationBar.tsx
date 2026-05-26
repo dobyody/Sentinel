@@ -17,7 +17,7 @@ export default function NavigationBar({ activeTab, onChangeTab, onReport, isHidd
           animate={{ y: 0 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute left-1/2 -translate-x-1/2 w-[90%] max-w-xs z-40"
+          className="absolute left-0 right-0 mx-auto w-[90%] max-w-xs z-40"
           style={{ bottom: 'calc(env(safe-area-inset-bottom) + 32px)' }}
         >
           <div className="bg-bg-tertiary/90 backdrop-blur-xl border border-border-subtle rounded-[2rem] p-1.5 flex items-center justify-between shadow-2xl">

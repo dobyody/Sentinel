@@ -198,7 +198,7 @@ export default function ProfileScreen() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
-            className="absolute bottom-24 left-1/2 -translate-x-1/2 bg-bg-primary border border-border-subtle text-text-primary px-4 py-2 rounded-full text-[14px] shadow-lg z-50 whitespace-nowrap"
+            className="absolute bottom-24 left-0 right-0 mx-auto w-max bg-bg-primary border border-border-subtle text-text-primary px-4 py-2 rounded-full text-[14px] shadow-lg z-50"
           >
             Copied stats to clipboard
           </motion.div>
