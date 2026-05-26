@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AlertCircle, AlertTriangle, Dog, Construction, MapPin, CheckCircle2, ChevronLeft, Image as ImageIcon } from 'lucide-react'
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
+import { divIcon } from 'leaflet'
+import { useTelegramLocation } from '../hooks/useTelegramLocation'
 
-// Defined categories based on 3-tap flow requirement
 const CATEGORIES = [
   { id: 'threat', label: 'Threat', desc: 'Harassment, aggressive behavior', icon: <AlertCircle size={24} strokeWidth={1.5} />, color: 'text-accent-red', bg: 'bg-accent-red/10', border: 'border-accent-red/30' },
   { id: 'infra', label: 'Infrastructure', desc: 'Unlit street, open manhole', icon: <AlertTriangle size={24} strokeWidth={1.5} />, color: 'text-orange-500', bg: 'bg-orange-500/10', border: 'border-orange-500/30' },
@@ -12,21 +14,44 @@ const CATEGORIES = [
 
 type Step = 'category' | 'location' | 'success';
 
+function MapEvents({ setReportPos }: { setReportPos: (pos: [number, number]) => void }) {
+  useMapEvents({
+    click(e) {
+      setReportPos([e.latlng.lat, e.latlng.lng]);
+    },
+  });
+  return null;
+}
+
 export default function CreateReport({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState<Step>('category');
-  
+  const { position: currentPosition } = useTelegramLocation([47.0150, 28.8400]);
+  const [reportPos, setReportPos] = useState<[number, number] | null>(null);
 
   const handleSelectCat = () => {
-    
+    setReportPos(currentPosition); // Default to user's live position
     setStep('location');
   };
 
   const handleSubmit = () => {
     setStep('success');
-    // Auto close after success
     setTimeout(() => {
       onClose();
     }, 2000);
+  };
+
+  const createReportMarkerIcon = () => {
+    return divIcon({
+      html: `
+        <div class="relative flex items-center justify-center">
+          <div class="absolute w-8 h-8 rounded-full bg-accent-blue opacity-30 animate-pulse"></div>
+          <div class="w-4 h-4 rounded-full bg-accent-blue border-[1.5px] border-bg-primary shadow-sm shadow-accent-blue/50"></div>
+        </div>
+      `,
+      className: '',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
+    });
   };
 
   return (
@@ -64,10 +89,9 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
           <div className="w-10" /> {/* Spacer */}
         </div>
 
-        <div className="p-4 relative min-h-[320px]">
+        <div className="p-4 relative min-h-[400px]">
           <AnimatePresence mode="wait">
             
-            {/* STEP 1: CATEGORY SELECTION */}
             {step === 'category' && (
               <motion.div
                 key="step1"
@@ -94,24 +118,34 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
               </motion.div>
             )}
 
-            {/* STEP 2: LOCATION CONFIRMATION */}
             {step === 'location' && (
               <motion.div
                 key="step2"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                className="flex flex-col h-full"
+                className="flex flex-col h-full absolute inset-4"
               >
-                {/* Fake mini map for pin dragging simulation */}
-                <div className="w-full h-40 rounded-2xl bg-bg-tertiary border border-border-subtle relative overflow-hidden mb-4 flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center grayscale" />
-                  <div className="w-12 h-12 bg-accent-blue/20 rounded-full flex items-center justify-center relative z-10 animate-pulse">
-                    <div className="w-3 h-3 bg-accent-blue rounded-full shadow-[0_0_10px_#0095F6]"></div>
-                  </div>
-                  <div className="absolute bottom-2 bg-bg-secondary/80 backdrop-blur-md px-3 py-1 rounded-full border border-border-subtle text-text-primary text-[12px] flex items-center gap-1.5 z-10">
+                <p className="text-text-secondary text-[13px] mb-2 text-center">Drag map to adjust pin</p>
+                <div className="w-full h-48 rounded-2xl bg-bg-tertiary border border-border-subtle relative overflow-hidden mb-4 z-0">
+                  <MapContainer 
+                    center={currentPosition} 
+                    zoom={15} 
+                    zoomControl={false}
+                    className="w-full h-full z-0"
+                  >
+                    <TileLayer
+                      url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                      attribution=""
+                    />
+                    <MapEvents setReportPos={setReportPos} />
+                    {reportPos && (
+                      <Marker position={reportPos} icon={createReportMarkerIcon()} />
+                    )}
+                  </MapContainer>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-bg-secondary/80 backdrop-blur-md px-3 py-1 rounded-full border border-border-subtle text-text-primary text-[12px] flex items-center gap-1.5 z-10 pointer-events-none">
                     <MapPin size={12} className="text-accent-blue" />
-                    Current GPS Location
+                    {reportPos === currentPosition ? "Current GPS" : "Custom Pin"}
                   </div>
                 </div>
 
@@ -120,13 +154,13 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
                   className="w-full h-16 bg-bg-tertiary border border-border-subtle rounded-xl p-3 outline-none text-text-primary text-[14px] placeholder:text-text-secondary resize-none mb-4"
                 />
 
-                <div className="mt-auto flex gap-3">
-                  <button className="p-4 rounded-xl bg-bg-tertiary border border-border-subtle text-text-primary flex items-center justify-center">
+                <div className="mt-auto flex gap-3 pb-2">
+                  <button className="p-4 rounded-xl bg-bg-tertiary border border-border-subtle text-text-primary flex items-center justify-center hover:bg-bg-secondary transition-colors">
                     <ImageIcon size={20} strokeWidth={1.5} />
                   </button>
                   <button 
                     onClick={handleSubmit}
-                    className="flex-1 py-4 rounded-xl bg-text-primary text-bg-primary font-bold text-[16px]"
+                    className="flex-1 py-4 rounded-xl bg-text-primary text-bg-primary font-bold text-[16px] hover:opacity-90 transition-opacity"
                   >
                     Submit Report
                   </button>
@@ -134,7 +168,6 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
               </motion.div>
             )}
 
-            {/* STEP 3: SUCCESS */}
             {step === 'success' && (
               <motion.div
                 key="step3"
