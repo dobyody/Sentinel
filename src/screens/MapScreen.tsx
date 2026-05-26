@@ -348,15 +348,6 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
 
                 <div className="flex justify-between items-center">
                   <span className="text-text-secondary text-[12px]">Reported anonymously</span>
-                  <button 
-                    onClick={() => {
-                      setSelectedHazard(null);
-                      setIsRouting(true); // Trigger a mock route away from here
-                    }}
-                    className="px-4 py-2 rounded-xl bg-bg-secondary border border-border-subtle text-text-primary text-[13px] font-semibold hover:bg-bg-primary transition-colors"
-                  >
-                    Route Around
-                  </button>
                 </div>
               </div>
             </motion.div>
