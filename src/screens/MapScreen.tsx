@@ -4,6 +4,7 @@ import { divIcon } from 'leaflet'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, ShieldCheck, ChevronLeft, MapPin, Clock, Home, Briefcase, Navigation, X } from 'lucide-react'
 import { MOCK_HAZARDS } from '../data/mockHazards'
+import { useTelegramLocation } from '../hooks/useTelegramLocation'
 
 interface MapScreenProps {
   activeTab: string;
@@ -11,7 +12,7 @@ interface MapScreenProps {
 
 export default function MapScreen({ activeTab }: MapScreenProps) {
   const isBlurred = activeTab !== 'map';
-  const [position] = useState<[number, number]>([47.0150, 28.8400]); // Moved closer to mock data center
+  const { position } = useTelegramLocation([47.0150, 28.8400]); 
   const [isRouting, setIsRouting] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
