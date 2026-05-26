@@ -59,6 +59,8 @@ The frontend operates inside a Telegram Mini App. User identity is strictly anon
 ### 📍 Hazard Reports (Pulse & Map)
 - `GET /api/reports?lat={lat}&lng={lng}&radius={km}&type={nearby|trending}`
   - Fetches active hazard reports for the Map and Pulse feed.
+- `GET /api/reports/:id`
+  - Fetch detailed data for a specific hazard when its map marker is clicked.
 - `POST /api/reports`
   - Creates a new hazard report (3-Tap flow).
   - Body: `{ category, lat, lng, description, photoUrl }`
@@ -87,6 +89,7 @@ To make the "live multiplayer mode of the city" a reality:
 - Open a WebSocket connection upon app load.
 - Broadcast new `HazardReport` events to users connected in the same geographic bounding box.
 - Update map markers in real-time without requiring a page refresh.
+- Note: The frontend relies on the Telegram SDK for live user GPS location via `WebApp.LocationManager`, but updates to hazards should come via WS.
 
 ## 5. Storage
 - S3-compatible object storage (AWS S3, Cloudflare R2, MinIO) for handling optional image uploads attached to hazard reports.

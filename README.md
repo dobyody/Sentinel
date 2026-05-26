@@ -6,15 +6,16 @@ With an ultra-minimalist, pitch-black "Threads-like" aesthetic, Sentinel focuses
 
 ## 🌟 Core Features
 
-- **Safe Routing (Map):** Interactive map powered by Leaflet with CartoDB Dark Matter tiles. Generates safe routes avoiding reported dangers (aggressive groups, unlit streets, stray dogs, etc.) with turn-by-turn navigation UI.
-- **3-Tap Reporting Flow:** An ultra-fast, 5-second mechanism to report incidents while on the move. Uses clear, color-coded categories:
+- **Safe Routing & Live Map:** Interactive map powered by Leaflet with CartoDB Dark Matter tiles. Generates safe routes avoiding reported dangers. Fully integrates with the **Telegram LocationManager API** (with HTML5 fallback) to track live GPS position and update navigation seamlessly.
+- **Interactive Hazard Preview:** Clicking on any hazard marker on the map opens a smooth, animated overlay with incident details, optional photos, and a quick "Route Around" action.
+- **3-Tap Reporting Flow:** An ultra-fast mechanism to report incidents while on the move. Uses clear, color-coded categories and an interactive mini-map for pinning exact hazard locations via GPS:
   - 🔴 **Threat** (Harassment, aggressive behavior)
   - 🟠 **Infrastructure Hazard** (Unlit street, open manhole)
   - 🟡 **Animal Hazard** (Stray dogs, aggressive animals)
   - 🔵 **Obstacle** (Blocked path, construction)
 - **Pulse (Social Feed):** An anonymous, location-based feed showing **Nearby** and **Trending** urban moments and hazards. No influencer culture, no follower counts.
 - **Anonymous Profiles:** Users are entirely anonymous (e.g., `Citizen #492`, `Anonymous #1234`). Profiles track civic contributions (reports made, people helped) and award trusted reporter badges.
-- **Telegram Mini App Ready:** Fully integrated with Telegram WebApp SDK for seamless execution within Telegram chats.
+- **Telegram Mini App Ready:** Fully integrated with Telegram WebApp SDK for seamless execution within Telegram chats. The UI is pixel-perfect for iOS/Android `safe-areas` and dynamic islands.
 
 ## 🛠️ Tech Stack
 
@@ -48,6 +49,7 @@ With an ultra-minimalist, pitch-black "Threads-like" aesthetic, Sentinel focuses
 - **Vibe:** Cinematic, dark, minimal, tactile.
 - **Colors:** Pitch black, muted graphite, with stark, meaningful accent colors for hazards.
 - **Typography:** System fonts (Inter, SF Pro) with clean hierarchies.
+- **Mobile First:** Strict adherence to mobile Viewport standards (disabling zoom, elastic scroll, optimizing iOS WebKit blur effects).
 
 ## 📄 License
 MIT License
