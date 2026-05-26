@@ -15,6 +15,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
   const [isRouting, setIsRouting] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [selectedHazard, setSelectedHazard] = useState<any | null>(null);
 
   // Minimal flat marker icon
   const createMarkerIcon = (type: 'danger' | 'warning' | 'info' | 'user' | 'destination') => {
@@ -103,6 +104,13 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
               key={hazard.id} 
               position={[hazard.latitude, hazard.longitude]} 
               icon={createMarkerIcon(getMarkerType(hazard.category))} 
+              eventHandlers={{
+                click: () => {
+                  setIsRouting(false);
+                  setIsSearching(false);
+                  setSelectedHazard(hazard);
+                }
+              }}
             />
           ))}
 
@@ -137,7 +145,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
         </MapContainer>
 
         {/* UI Overlay - Search Bar */}
-        {!isRouting && !isSearching && !isNavigating && (
+        {!isRouting && !isSearching && !isNavigating && !selectedHazard && (
           <div 
             className="absolute left-4 right-4 z-10"
             style={{ top: 'calc(env(safe-area-inset-top) + 24px)' }}
@@ -298,6 +306,58 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
                 >
                   End
                 </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* UI Overlay - Hazard Details */}
+        <AnimatePresence>
+          {selectedHazard && !isNavigating && !isRouting && (
+            <motion.div 
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 50, opacity: 0 }}
+              className="absolute left-4 right-4 z-10"
+              style={{ bottom: 'calc(env(safe-area-inset-bottom) + 112px)' }}
+            >
+              <div className="bg-bg-tertiary/90 backdrop-blur-xl border border-border-subtle rounded-3xl p-4 shadow-2xl">
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className={`font-semibold text-[16px] ${getMarkerType(selectedHazard.category) === 'danger' ? 'text-accent-red' : getMarkerType(selectedHazard.category) === 'warning' ? 'text-orange-500' : 'text-text-secondary'}`}>
+                      {selectedHazard.category}
+                    </span>
+                  </div>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setSelectedHazard(null); }}
+                    className="w-8 h-8 rounded-full bg-bg-secondary flex items-center justify-center text-text-secondary border border-border-subtle hover:bg-bg-primary transition-colors"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+                
+                <p className="text-text-primary text-[14px] leading-relaxed font-light mb-4 line-clamp-3">
+                  {selectedHazard.description}
+                </p>
+
+                {selectedHazard.id % 5 === 0 && (
+                  <div className="w-full h-32 rounded-xl bg-bg-secondary mb-3 overflow-hidden border border-border-subtle relative">
+                    <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-40 grayscale" />
+                  </div>
+                )}
+
+                <div className="flex justify-between items-center">
+                  <span className="text-text-secondary text-[12px]">Reported anonymously</span>
+                  <button 
+                    onClick={() => {
+                      setSelectedHazard(null);
+                      setIsRouting(true); // Trigger a mock route away from here
+                    }}
+                    className="px-4 py-2 rounded-xl bg-bg-secondary border border-border-subtle text-text-primary text-[13px] font-semibold hover:bg-bg-primary transition-colors"
+                  >
+                    Route Around
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}
