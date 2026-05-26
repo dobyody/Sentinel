@@ -18,7 +18,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
   const [selectedHazard, setSelectedHazard] = useState<any | null>(null);
 
   // Minimal flat marker icon
-  const createMarkerIcon = (type: 'danger' | 'warning' | 'info' | 'user' | 'destination') => {
+  const createMarkerIcon = (type: 'danger' | 'warning' | 'info' | 'user' | 'destination', isSelected: boolean = false) => {
     let bg = 'bg-text-primary';
     let size = 'w-3 h-3';
     let pulse = false;
@@ -39,7 +39,8 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
     const html = `
       <div class="relative flex items-center justify-center">
         ${pulse ? `<div class="absolute w-8 h-8 rounded-full ${bg} opacity-20 animate-ping"></div>` : ''}
-        <div class="${size} rounded-full ${bg} border-[1.5px] border-bg-primary shadow-sm"></div>
+        ${isSelected ? `<div class="absolute w-8 h-8 rounded-full ${bg} opacity-30 animate-pulse"></div>` : ''}
+        <div class="${size} rounded-full ${bg} border-[1.5px] border-bg-primary shadow-sm ${isSelected ? 'scale-150 transition-transform' : 'transition-transform'}"></div>
       </div>
     `;
 
@@ -103,7 +104,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
             <Marker 
               key={hazard.id} 
               position={[hazard.latitude, hazard.longitude]} 
-              icon={createMarkerIcon(getMarkerType(hazard.category))} 
+              icon={createMarkerIcon(getMarkerType(hazard.category), selectedHazard?.id === hazard.id)} 
               eventHandlers={{
                 click: () => {
                   setIsRouting(false);
