@@ -137,7 +137,7 @@ export default function ProfileScreen() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 bg-bg-primary z-50 flex flex-col"
           >
             <div className="pt-6 px-4 pb-4 border-b border-border-subtle flex items-center justify-between sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-20">

@@ -120,7 +120,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 bg-bg-primary z-50 flex flex-col"
             >
               <div className="pt-6 px-4 pb-4 border-b border-border-subtle flex items-center gap-3">
@@ -133,7 +133,6 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
                     type="text" 
                     placeholder="Search destination..." 
                     className="bg-transparent border-none outline-none text-text-primary text-[15px] w-full placeholder:text-text-secondary"
-                    autoFocus
                   />
                 </div>
               </div>

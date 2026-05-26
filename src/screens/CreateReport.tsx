@@ -42,7 +42,7 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
         initial={{ y: "100%" }}
         animate={{ y: 0 }}
         exit={{ y: "100%" }}
-        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         className="absolute bottom-0 left-0 w-full bg-bg-secondary border-t border-border-subtle rounded-t-[32px] z-50 shadow-2xl flex flex-col"
       >
         <div className="flex justify-between items-center p-4 border-b border-border-subtle">
