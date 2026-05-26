@@ -26,6 +26,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  overscroll-behavior-y: none;
+  touch-action: pan-x pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Map overlay reset */
 .leaflet-container {
   width: 100%;

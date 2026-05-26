@@ -32,9 +32,13 @@ export default function SocialFeed() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
-        className="absolute inset-0 z-10 pb-32 overflow-y-auto bg-bg-primary/80 backdrop-blur-md"
+        className="absolute inset-0 z-10 overflow-y-auto bg-bg-primary/80 backdrop-blur-md"
+        style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 128px)' }}
       >
-        <div className="sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-30 border-b border-border-subtle pt-6 px-4 pb-0 mb-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]">
+        <div 
+          className="sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-30 border-b border-border-subtle px-4 pb-0 mb-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
+          style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}
+        >
           <h2 className="text-2xl font-bold text-text-primary mb-4 text-center">Pulse</h2>
           <div className="flex w-full justify-between relative">
             <button 
@@ -89,7 +93,10 @@ export default function SocialFeed() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 bg-bg-primary z-50 flex flex-col"
           >
-            <div className="pt-6 px-4 pb-4 border-b border-border-subtle flex items-center justify-between sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-20">
+            <div 
+              className="px-4 pb-4 border-b border-border-subtle flex items-center justify-between sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-20"
+              style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}
+            >
               <button onClick={() => setSelectedPost(null)} className="text-text-primary flex items-center gap-1">
                 <ChevronLeft size={24} strokeWidth={1.5} className="-ml-2" />
                 <span>Back</span>
@@ -98,7 +105,10 @@ export default function SocialFeed() {
               <div className="w-16" />
             </div>
 
-            <div className="flex-1 overflow-y-auto pb-32">
+            <div 
+              className="flex-1 overflow-y-auto"
+              style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 128px)' }}
+            >
               {/* Original Post */}
               <div className="border-b border-border-strong">
                 <FeedCard {...selectedPost} isDetail />
@@ -133,7 +143,10 @@ export default function SocialFeed() {
             </div>
 
             {/* Comment Input */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-bg-primary/90 backdrop-blur-xl border-t border-border-subtle">
+            <div 
+              className="absolute bottom-0 left-0 right-0 p-4 bg-bg-primary/90 backdrop-blur-xl border-t border-border-subtle"
+              style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 16px)' }}
+            >
               <div className="flex gap-3 items-center bg-bg-secondary border border-border-subtle rounded-full px-4 py-2">
                 <div className="w-8 h-8 rounded-full bg-bg-tertiary flex items-center justify-center text-text-primary text-sm font-bold">
                   E

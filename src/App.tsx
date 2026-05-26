@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full h-[100dvh] overflow-hidden bg-bg-charcoal text-text-cream relative">
+    <div className="w-full h-[100dvh] overflow-hidden bg-bg-primary text-text-primary relative">
       <AnimatePresence mode="wait">
         {showSplash ? (
           <Splash key="splash" />

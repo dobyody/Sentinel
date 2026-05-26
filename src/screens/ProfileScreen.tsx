@@ -18,7 +18,8 @@ export default function ProfileScreen() {
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.98 }}
-        className="absolute inset-0 z-10 pt-6 px-4 pb-32 overflow-y-auto bg-bg-primary/80 backdrop-blur-md"
+        className="absolute inset-0 z-10 px-4 overflow-y-auto bg-bg-primary/80 backdrop-blur-md"
+        style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 128px)' }}
       >
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-text-primary flex items-center gap-2">
@@ -140,7 +141,10 @@ export default function ProfileScreen() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 bg-bg-primary z-50 flex flex-col"
           >
-            <div className="pt-6 px-4 pb-4 border-b border-border-subtle flex items-center justify-between sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-20">
+            <div 
+              className="px-4 pb-4 border-b border-border-subtle flex items-center justify-between sticky top-0 bg-bg-primary/90 backdrop-blur-xl z-20"
+              style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}
+            >
               <button onClick={() => setShowSettings(false)} className="text-text-primary flex items-center gap-1">
                 <ChevronLeft size={24} strokeWidth={1.5} className="-ml-2" />
                 <span>Back</span>
