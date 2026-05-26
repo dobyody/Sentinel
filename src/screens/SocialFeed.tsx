@@ -27,10 +27,10 @@ const transformHazardToPost = (hazard: any) => {
     reports: reportsCount,
     time: `${minutesAgo}m`,
     tag: { label: hazard.category, icon },
-    content: `${hazard.description} (${hazard.location})`,
+    content: hazard.description,
     likes,
     comments: commentsCount,
-    hasImage: hazard.id % 5 === 0 // 1 in 5 has an image
+    hasImage: false // Removing the incorrect image placeholder
   };
 };
 
@@ -228,9 +228,7 @@ function FeedCard({ author, reports, time, tag, content, likes, comments, hasIma
           </p>
 
           {hasImage && (
-            <div className="w-full h-48 rounded-xl bg-bg-tertiary mb-3 overflow-hidden border border-border-subtle">
-              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-40 grayscale" />
-            </div>
+            <div className="w-full h-48 rounded-xl bg-bg-tertiary mb-3 overflow-hidden border border-border-subtle animate-pulse" />
           )}
 
           {/* Action Bar */}

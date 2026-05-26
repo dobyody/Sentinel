@@ -1,402 +1,402 @@
 [
   {
     "id": 1,
-    "category": "Threat",
-    "location": "Bulevardul Dacia",
-    "latitude": 46.9928,
-    "longitude": 28.8422,
-    "description": "Около остановки несколько человек вели себя агрессивно, прохожие ускоряли шаг и обходили место стороной."
+    "category": "Fire Safety",
+    "location": "Botanica",
+    "latitude": 46.99262128177641,
+    "longitude": 28.795225355282295,
+    "description": "Se observă cabluri expuse la baza unui stâlp și pare nevoie de intervenție rapidă."
   },
   {
     "id": 2,
-    "category": "Infrastructure",
-    "location": "Bulevardul Dacia",
-    "latitude": 46.9941,
-    "longitude": 28.8465,
-    "description": "Pavajul este rupt pe o porțiune lungă, iar noaptea devine greu de observat pentru pietoni."
+    "category": "Vandalism",
+    "location": "Botanica",
+    "latitude": 46.988258960333496,
+    "longitude": 28.90918418353658,
+    "description": "Un perete al clădirii are graffiti proaspăt și un aspect foarte degradat."
   },
   {
     "id": 3,
-    "category": "Traffic",
+    "category": "Infrastructure",
     "location": "Bulevardul Dacia",
-    "latitude": 46.9962,
-    "longitude": 28.8494,
-    "description": "Illegal parking blocks part of the crosswalk and forces people to step into the street."
+    "latitude": 46.951979883719794,
+    "longitude": 28.77368359123364,
+    "description": "Pavajul este rupt pe o porțiune lungă, iar noaptea devine greu de observat pentru pietoni."
   },
   {
     "id": 4,
     "category": "Lighting",
-    "location": "Bulevardul Dacia",
-    "latitude": 46.9974,
-    "longitude": 28.8521,
-    "description": "Уличный фонарь не работает уже несколько вечеров подряд, и участок остается темным."
-  },
-  {
-    "id": 5,
-    "category": "Animal Hazard",
-    "location": "Bulevardul Dacia",
-    "latitude": 46.9989,
-    "longitude": 28.8556,
-    "description": "Mai mulți câini fără stăpân stau lângă trotuar și devin agitați când trec oamenii."
-  },
-  {
-    "id": 6,
-    "category": "Obstacle",
-    "location": "Bulevardul Dacia",
-    "latitude": 47.0001,
-    "longitude": 28.8580,
-    "description": "Construction materials are stored on the sidewalk, narrowing the passage for pedestrians."
-  },
-  {
-    "id": 7,
-    "category": "Waste",
-    "location": "Bulevardul Dacia",
-    "latitude": 47.0013,
-    "longitude": 28.8604,
-    "description": "Gunoiul s-a adunat lângă coșurile pline și miroase puternic în jurul stației."
-  },
-  {
-    "id": 8,
-    "category": "Water",
-    "location": "Bulevardul Dacia",
-    "latitude": 47.0027,
-    "longitude": 28.8631,
-    "description": "There is standing water near the curb after rain, making the sidewalk slippery."
-  },
-  {
-    "id": 9,
-    "category": "Vandalism",
-    "location": "Bulevardul Dacia",
-    "latitude": 47.0040,
-    "longitude": 28.8657,
-    "description": "Un panou informativ a fost vandalizat și nu mai poate fi citit clar."
-  },
-  {
-    "id": 10,
-    "category": "Fire Safety",
-    "location": "Bulevardul Dacia",
-    "latitude": 47.0055,
-    "longitude": 28.8683,
-    "description": "Возле электрощита чувствуется запах гари, и это выглядит как риск возгорания."
-  },
-  {
-    "id": 11,
-    "category": "Threat",
     "location": "Piața Centrală",
-    "latitude": 47.0308,
-    "longitude": 28.8511,
-    "description": "Un grup de persoane a început să urmărească insistent trecătorii și să ceară bani agresiv."
-  },
-  {
-    "id": 12,
-    "category": "Infrastructure",
-    "location": "Piața Centrală",
-    "latitude": 47.0319,
-    "longitude": 28.8528,
-    "description": "Asfaltul este spart lângă intrare și se formează o groapă adâncă după ploaie."
-  },
-  {
-    "id": 13,
-    "category": "Traffic",
-    "location": "Piața Centrală",
-    "latitude": 47.0327,
-    "longitude": 28.8539,
-    "description": "Машина доставки перекрыла проход для пешеходов и создала тесный участок."
-  },
-  {
-    "id": 14,
-    "category": "Lighting",
-    "location": "Piața Centrală",
-    "latitude": 47.0335,
-    "longitude": 28.8552,
+    "latitude": 46.9756306690565,
+    "longitude": 28.910698856644764,
     "description": "The light above the passage is off, and the area feels unsafe after sunset."
   },
   {
-    "id": 15,
-    "category": "Animal Hazard",
-    "location": "Piața Centrală",
-    "latitude": 47.0341,
-    "longitude": 28.8565,
-    "description": "Câinii fără stăpân stau lângă tarabe și se apropie de oameni care cară pungi cu mâncare."
+    "id": 5,
+    "category": "Vandalism",
+    "location": "Bulevardul Dacia",
+    "latitude": 46.96014085513765,
+    "longitude": 28.873385936922325,
+    "description": "Un panou informativ a fost vandalizat și nu mai poate fi citit clar."
   },
   {
-    "id": 16,
+    "id": 6,
+    "category": "Threat",
+    "location": "Botanica",
+    "latitude": 47.01852808201004,
+    "longitude": 28.858687966468025,
+    "description": "Вечером возле остановки группа людей ведет себя шумно и пугает прохожих."
+  },
+  {
+    "id": 7,
+    "category": "Lighting",
+    "location": "Bulevardul Ștefan cel Mare",
+    "latitude": 46.96562025563558,
+    "longitude": 28.75465096617933,
+    "description": "Освещение на участке частично не работает, и вечером переход выглядит тёмным."
+  },
+  {
+    "id": 8,
     "category": "Obstacle",
     "location": "Piața Centrală",
-    "latitude": 47.0350,
-    "longitude": 28.8574,
+    "latitude": 47.02907899508605,
+    "longitude": 28.79559544247943,
     "description": "Temporary fencing blocks part of the sidewalk, so pedestrians have to detour."
   },
   {
-    "id": 17,
-    "category": "Waste",
-    "location": "Piața Centrală",
-    "latitude": 47.0358,
-    "longitude": 28.8586,
-    "description": "Gunoiul menajer este lăsat lângă gard și atrage păsări și miros neplăcut."
-  },
-  {
-    "id": 18,
-    "category": "Water",
-    "location": "Piața Centrală",
-    "latitude": 47.0366,
-    "longitude": 28.8597,
-    "description": "Из-под трубы течет вода, и на проходе уже образовалась скользкая лужа."
-  },
-  {
-    "id": 19,
-    "category": "Vandalism",
-    "location": "Piața Centrală",
-    "latitude": 47.0375,
-    "longitude": 28.8609,
-    "description": "A bench near the entrance is broken, with sharp edges sticking out."
-  },
-  {
-    "id": 20,
-    "category": "Fire Safety",
-    "location": "Piața Centrală",
-    "latitude": 47.0382,
-    "longitude": 28.8618,
-    "description": "Un cablu pare încălzit și atârnă jos lângă un stand improvizat."
-  },
-  {
-    "id": 21,
-    "category": "Threat",
-    "location": "Valea Morilor",
-    "latitude": 47.0220,
-    "longitude": 28.8146,
-    "description": "A man was following pedestrians too closely along the lake path and made people uncomfortable."
-  },
-  {
-    "id": 22,
-    "category": "Infrastructure",
-    "location": "Valea Morilor",
-    "latitude": 47.0232,
-    "longitude": 28.8157,
-    "description": "Плитка просела возле дорожки, и нога легко может зацепиться за край."
-  },
-  {
-    "id": 23,
-    "category": "Traffic",
-    "location": "Valea Morilor",
-    "latitude": 47.0244,
-    "longitude": 28.8168,
-    "description": "O mașină a urcat pe alee și a blocat traseul pentru pietoni și bicicliști."
-  },
-  {
-    "id": 24,
-    "category": "Lighting",
-    "location": "Valea Morilor",
-    "latitude": 47.0253,
-    "longitude": 28.8180,
-    "description": "Several lamps are not working near the path, leaving a dark stretch by the water."
-  },
-  {
-    "id": 25,
+    "id": 9,
     "category": "Animal Hazard",
-    "location": "Valea Morilor",
-    "latitude": 47.0261,
-    "longitude": 28.8193,
-    "description": "Mai mulți câini se țin la distanță mică de oameni și latră când cineva aleargă pe alee."
+    "location": "Bulevardul Dacia",
+    "latitude": 47.02250821640739,
+    "longitude": 28.83852269524253,
+    "description": "Mai mulți câini fără stăpân stau lângă trotuar și devin agitați când trec oamenii."
   },
   {
-    "id": 26,
+    "id": 10,
     "category": "Obstacle",
-    "location": "Valea Morilor",
-    "latitude": 47.0270,
-    "longitude": 28.8204,
-    "description": "Construction cones are left across half of the walkway, making passage narrow."
+    "location": "Botanica",
+    "latitude": 46.99684680398714,
+    "longitude": 28.816611583892456,
+    "description": "Gardul temporar ocupă aproape tot trotuarul și lasă foarte puțin spațiu de trecere."
   },
   {
-    "id": 27,
+    "id": 11,
     "category": "Waste",
-    "location": "Valea Morilor",
-    "latitude": 47.0278,
-    "longitude": 28.8216,
-    "description": "Лавки возле дорожки завалены мусором, и место выглядит давно неубранным."
+    "location": "Bulevardul Dacia",
+    "latitude": 46.98146248395308,
+    "longitude": 28.875260177777562,
+    "description": "Gunoiul s-a adunat lângă coșurile pline și miroase puternic în jurul stației."
   },
   {
-    "id": 28,
+    "id": 12,
+    "category": "Traffic",
+    "location": "Bulevardul Dacia",
+    "latitude": 47.03473737427031,
+    "longitude": 28.75759121040446,
+    "description": "Illegal parking blocks part of the crosswalk and forces people to step into the street."
+  },
+  {
+    "id": 13,
+    "category": "Fire Safety",
+    "location": "Bulevardul Dacia",
+    "latitude": 47.01266627838896,
+    "longitude": 28.802512596074852,
+    "description": "Возле электрощита чувствуется запах гари, и это выглядит как риск возгорания."
+  },
+  {
+    "id": 14,
+    "category": "Threat",
+    "location": "Bulevardul Dacia",
+    "latitude": 46.974340830605776,
+    "longitude": 28.827166750992703,
+    "description": "Около остановки несколько человек вели себя агрессивно, прохожие ускоряли шаг и обходили место стороной."
+  },
+  {
+    "id": 15,
     "category": "Water",
     "location": "Valea Morilor",
-    "latitude": 47.0287,
-    "longitude": 28.8227,
+    "latitude": 47.00172985610471,
+    "longitude": 28.810523168354084,
     "description": "Apa se scurge pe alee după ploaie și creează o porțiune foarte alunecoasă."
   },
   {
-    "id": 29,
-    "category": "Vandalism",
+    "id": 16,
+    "category": "Water",
+    "location": "Bulevardul Dacia",
+    "latitude": 46.9844155140715,
+    "longitude": 28.857848396842563,
+    "description": "There is standing water near the curb after rain, making the sidewalk slippery."
+  },
+  {
+    "id": 17,
+    "category": "Obstacle",
+    "location": "Bulevardul Dacia",
+    "latitude": 47.04758731330585,
+    "longitude": 28.79643810472116,
+    "description": "Construction materials are stored on the sidewalk, narrowing the passage for pedestrians."
+  },
+  {
+    "id": 18,
+    "category": "Waste",
+    "location": "Piața Centrală",
+    "latitude": 47.03971187058123,
+    "longitude": 28.867939598130523,
+    "description": "Gunoiul menajer este lăsat lângă gard și atrage păsări și miros neplăcut."
+  },
+  {
+    "id": 19,
+    "category": "Traffic",
+    "location": "Botanica",
+    "latitude": 46.95849521639188,
+    "longitude": 28.846762489580758,
+    "description": "A delivery truck is parked across the pedestrian access point and blocks movement."
+  },
+  {
+    "id": 20,
+    "category": "Lighting",
+    "location": "Botanica",
+    "latitude": 47.021476469590326,
+    "longitude": 28.915028074208365,
+    "description": "Un stâlp de iluminat este stins și zona de lângă parc devine foarte slab luminată."
+  },
+  {
+    "id": 21,
+    "category": "Fire Safety",
+    "location": "Bulevardul Ștefan cel Mare",
+    "latitude": 46.978910090763385,
+    "longitude": 28.854177716039104,
+    "description": "A cable box is sparking slightly, and people nearby are keeping distance."
+  },
+  {
+    "id": 22,
+    "category": "Waste",
+    "location": "Botanica",
+    "latitude": 47.04516663835284,
+    "longitude": 28.928120603135234,
+    "description": "The bin area is overflowing, and trash is already blowing onto the sidewalk."
+  },
+  {
+    "id": 23,
+    "category": "Obstacle",
     "location": "Valea Morilor",
-    "latitude": 47.0295,
-    "longitude": 28.8239,
-    "description": "A signpost is bent and partially broken, so directions are hard to see."
+    "latitude": 46.95718188296239,
+    "longitude": 28.886748108136022,
+    "description": "Construction cones are left across half of the walkway, making passage narrow."
+  },
+  {
+    "id": 24,
+    "category": "Vandalism",
+    "location": "Bulevardul Ștefan cel Mare",
+    "latitude": 47.01736490806202,
+    "longitude": 28.79295955202584,
+    "description": "Un afișaj public a fost rupt și lăsat atârnat, ceea ce arată neîngrijit."
+  },
+  {
+    "id": 25,
+    "category": "Fire Safety",
+    "location": "Piața Centrală",
+    "latitude": 46.994163810253625,
+    "longitude": 28.87066647685136,
+    "description": "Un cablu pare încălzit și atârnă jos lângă un stand improvizat."
+  },
+  {
+    "id": 26,
+    "category": "Waste",
+    "location": "Bulevardul Ștefan cel Mare",
+    "latitude": 47.028896595655006,
+    "longitude": 28.865468710686653,
+    "description": "Au fost lăsate cutii și ambalaje lângă bordură, blocând o parte din trecere."
+  },
+  {
+    "id": 27,
+    "category": "Obstacle",
+    "location": "Bulevardul Ștefan cel Mare",
+    "latitude": 47.03509070295264,
+    "longitude": 28.88048586669483,
+    "description": "A section of the sidewalk is fenced off for repairs, and the detour is tight."
+  },
+  {
+    "id": 28,
+    "category": "Traffic",
+    "location": "Valea Morilor",
+    "latitude": 46.98024752381019,
+    "longitude": 28.802334538901803,
+    "description": "O mașină a urcat pe alee și a blocat traseul pentru pietoni și bicicliști."
+  },
+  {
+    "id": 29,
+    "category": "Traffic",
+    "location": "Bulevardul Ștefan cel Mare",
+    "latitude": 46.97173599266519,
+    "longitude": 28.83712106001183,
+    "description": "Car sharing cars are stopping in the bus lane and slowing the flow."
   },
   {
     "id": 30,
-    "category": "Fire Safety",
-    "location": "Valea Morilor",
-    "latitude": 47.0304,
-    "longitude": 28.8249,
-    "description": "Se vede fum lângă zona cu iarbă uscată, iar sursa nu pare controlată."
+    "category": "Traffic",
+    "location": "Piața Centrală",
+    "latitude": 46.961863485280226,
+    "longitude": 28.801602344570064,
+    "description": "Машина доставки перекрыла проход для пешеходов и создала тесный участок."
   },
   {
     "id": 31,
     "category": "Threat",
     "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0248,
-    "longitude": 28.8336,
+    "latitude": 47.04290134541228,
+    "longitude": 28.775741828901527,
     "description": "Один человек стал агрессивно кричать на прохожих возле перехода."
   },
   {
     "id": 32,
-    "category": "Infrastructure",
+    "category": "Animal Hazard",
     "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0255,
-    "longitude": 28.8350,
-    "description": "Trotuarul este crăpat și are margini ridicate care pot împiedica mersul."
+    "latitude": 46.9966156807944,
+    "longitude": 28.902222933386422,
+    "description": "Câini vagabonzi stau lângă tomberon și devin agitați când apar persoane singure."
   },
   {
     "id": 33,
-    "category": "Traffic",
-    "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0262,
-    "longitude": 28.8363,
-    "description": "Car sharing cars are stopping in the bus lane and slowing the flow."
+    "category": "Infrastructure",
+    "location": "Piața Centrală",
+    "latitude": 47.02940663689694,
+    "longitude": 28.813878615979135,
+    "description": "Asfaltul este spart lângă intrare și se formează o groapă adâncă după ploaie."
   },
   {
     "id": 34,
-    "category": "Lighting",
+    "category": "Water",
     "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0270,
-    "longitude": 28.8376,
-    "description": "Освещение на участке частично не работает, и вечером переход выглядит тёмным."
+    "latitude": 46.994488917820924,
+    "longitude": 28.772528415633843,
+    "description": "There is a leaking pipe near the curb, and the puddle keeps spreading."
   },
   {
     "id": 35,
     "category": "Animal Hazard",
-    "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0278,
-    "longitude": 28.8389,
-    "description": "Câini vagabonzi stau lângă tomberon și devin agitați când apar persoane singure."
+    "location": "Piața Centrală",
+    "latitude": 47.04710318547002,
+    "longitude": 28.920343261797804,
+    "description": "Câinii fără stăpân stau lângă tarabe și se apropie de oameni care cară pungi cu mâncare."
   },
   {
     "id": 36,
-    "category": "Obstacle",
+    "category": "Infrastructure",
     "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0286,
-    "longitude": 28.8401,
-    "description": "A section of the sidewalk is fenced off for repairs, and the detour is tight."
+    "latitude": 46.97067579135503,
+    "longitude": 28.83467966341691,
+    "description": "Trotuarul este crăpat și are margini ridicate care pot împiedica mersul."
   },
   {
     "id": 37,
-    "category": "Waste",
-    "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0294,
-    "longitude": 28.8413,
-    "description": "Au fost lăsate cutii și ambalaje lângă bordură, blocând o parte din trecere."
+    "category": "Lighting",
+    "location": "Valea Morilor",
+    "latitude": 46.96512671104659,
+    "longitude": 28.834277227616063,
+    "description": "Several lamps are not working near the path, leaving a dark stretch by the water."
   },
   {
     "id": 38,
-    "category": "Water",
-    "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0301,
-    "longitude": 28.8426,
-    "description": "There is a leaking pipe near the curb, and the puddle keeps spreading."
+    "category": "Animal Hazard",
+    "location": "Valea Morilor",
+    "latitude": 46.99446555658694,
+    "longitude": 28.88105234482362,
+    "description": "Mai mulți câini se țin la distanță mică de oameni și latră când cineva aleargă pe alee."
   },
   {
     "id": 39,
-    "category": "Vandalism",
-    "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0310,
-    "longitude": 28.8438,
-    "description": "Un afișaj public a fost rupt și lăsat atârnat, ceea ce arată neîngrijit."
+    "category": "Lighting",
+    "location": "Bulevardul Dacia",
+    "latitude": 47.01999456161939,
+    "longitude": 28.79405250967964,
+    "description": "Уличный фонарь не работает уже несколько вечеров подряд, и участок остается темным."
   },
   {
     "id": 40,
-    "category": "Fire Safety",
-    "location": "Bulevardul Ștefan cel Mare",
-    "latitude": 47.0318,
-    "longitude": 28.8450,
-    "description": "A cable box is sparking slightly, and people nearby are keeping distance."
+    "category": "Vandalism",
+    "location": "Piața Centrală",
+    "latitude": 47.036623183943014,
+    "longitude": 28.787756429273657,
+    "description": "A bench near the entrance is broken, with sharp edges sticking out."
   },
   {
     "id": 41,
     "category": "Threat",
-    "location": "Botanica",
-    "latitude": 46.9984,
-    "longitude": 28.8490,
-    "description": "Вечером возле остановки группа людей ведет себя шумно и пугает прохожих."
+    "location": "Valea Morilor",
+    "latitude": 46.968037097748415,
+    "longitude": 28.84141887235342,
+    "description": "A man was following pedestrians too closely along the lake path and made people uncomfortable."
   },
   {
     "id": 42,
     "category": "Infrastructure",
-    "location": "Botanica",
-    "latitude": 46.9992,
-    "longitude": 28.8503,
-    "description": "Pe trotuar a apărut o fisură adâncă, iar marginile sunt deja desprinse."
+    "location": "Valea Morilor",
+    "latitude": 47.00761230924764,
+    "longitude": 28.790158792317253,
+    "description": "Плитка просела возле дорожки, и нога легко может зацепиться за край."
   },
   {
     "id": 43,
-    "category": "Traffic",
-    "location": "Botanica",
-    "latitude": 47.0000,
-    "longitude": 28.8515,
-    "description": "A delivery truck is parked across the pedestrian access point and blocks movement."
+    "category": "Waste",
+    "location": "Valea Morilor",
+    "latitude": 47.0022359865548,
+    "longitude": 28.904230963038717,
+    "description": "Лавки возле дорожки завалены мусором, и место выглядит давно неубранным."
   },
   {
     "id": 44,
-    "category": "Lighting",
-    "location": "Botanica",
-    "latitude": 47.0008,
-    "longitude": 28.8527,
-    "description": "Un stâlp de iluminat este stins și zona de lângă parc devine foarte slab luminată."
+    "category": "Vandalism",
+    "location": "Valea Morilor",
+    "latitude": 47.032839531673126,
+    "longitude": 28.908434411481746,
+    "description": "A signpost is bent and partially broken, so directions are hard to see."
   },
   {
     "id": 45,
-    "category": "Animal Hazard",
-    "location": "Botanica",
-    "latitude": 47.0016,
-    "longitude": 28.8539,
-    "description": "Несколько бездомных собак лежат прямо у тротуара и не дают спокойно пройти."
+    "category": "Threat",
+    "location": "Piața Centrală",
+    "latitude": 47.03710285127778,
+    "longitude": 28.9096033536344,
+    "description": "Un grup de persoane a început să urmărească insistent trecătorii și să ceară bani agresiv."
   },
   {
     "id": 46,
-    "category": "Obstacle",
-    "location": "Botanica",
-    "latitude": 47.0024,
-    "longitude": 28.8551,
-    "description": "Gardul temporar ocupă aproape tot trotuarul și lasă foarte puțin spațiu de trecere."
-  },
-  {
-    "id": 47,
-    "category": "Waste",
-    "location": "Botanica",
-    "latitude": 47.0032,
-    "longitude": 28.8563,
-    "description": "The bin area is overflowing, and trash is already blowing onto the sidewalk."
-  },
-  {
-    "id": 48,
     "category": "Water",
     "location": "Botanica",
-    "latitude": 47.0040,
-    "longitude": 28.8575,
+    "latitude": 46.95710953476413,
+    "longitude": 28.78992459600688,
     "description": "Apa acumulată după ploaie acoperă aproape jumătate din trecere."
   },
   {
-    "id": 49,
-    "category": "Vandalism",
+    "id": 47,
+    "category": "Fire Safety",
+    "location": "Valea Morilor",
+    "latitude": 46.96695727157644,
+    "longitude": 28.875678270373168,
+    "description": "Se vede fum lângă zona cu iarbă uscată, iar sursa nu pare controlată."
+  },
+  {
+    "id": 48,
+    "category": "Animal Hazard",
     "location": "Botanica",
-    "latitude": 47.0048,
-    "longitude": 28.8587,
-    "description": "Un perete al clădirii are graffiti proaspăt și un aspect foarte degradat."
+    "latitude": 47.04619010079337,
+    "longitude": 28.929834882991063,
+    "description": "Несколько бездомных собак лежат прямо у тротуара и не дают спокойно пройти."
+  },
+  {
+    "id": 49,
+    "category": "Infrastructure",
+    "location": "Botanica",
+    "latitude": 46.95009381846505,
+    "longitude": 28.946686222945345,
+    "description": "Pe trotuar a apărut o fisură adâncă, iar marginile sunt deja desprinse."
   },
   {
     "id": 50,
-    "category": "Fire Safety",
-    "location": "Botanica",
-    "latitude": 47.0056,
-    "longitude": 28.8599,
-    "description": "Se observă cabluri expuse la baza unui stâlp și pare nevoie de intervenție rapidă."
+    "category": "Water",
+    "location": "Piața Centrală",
+    "latitude": 47.04769122609465,
+    "longitude": 28.93824167113337,
+    "description": "Из-под трубы течет вода, и на проходе уже образовалась скользкая лужа."
   }
 ]
