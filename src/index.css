@@ -32,6 +32,18 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Fix iOS backdrop-filter bug by adding a utility class */
+@layer utilities {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}
+
 /* Map overlay reset */
 .leaflet-container {
   width: 100%;
