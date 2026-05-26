@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet'
 import { divIcon } from 'leaflet'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, ShieldCheck, AlertTriangle, ArrowRight, ChevronLeft, MapPin, Clock, Home, Briefcase, Navigation, X } from 'lucide-react'
+import { Search, ShieldCheck, ChevronLeft, MapPin, Clock, Home, Briefcase, Navigation, X } from 'lucide-react'
+import { MOCK_HAZARDS } from '../data/mockHazards'
 
 interface MapScreenProps {
   activeTab: string;
@@ -10,18 +11,19 @@ interface MapScreenProps {
 
 export default function MapScreen({ activeTab }: MapScreenProps) {
   const isBlurred = activeTab !== 'map';
-  const [position] = useState<[number, number]>([47.0105, 28.8322]); 
+  const [position] = useState<[number, number]>([47.0150, 28.8400]); // Moved closer to mock data center
   const [isRouting, setIsRouting] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
 
   // Minimal flat marker icon
-  const createMarkerIcon = (type: 'danger' | 'info' | 'user' | 'destination') => {
+  const createMarkerIcon = (type: 'danger' | 'warning' | 'info' | 'user' | 'destination') => {
     let bg = 'bg-text-primary';
     let size = 'w-3 h-3';
     let pulse = false;
 
     if (type === 'danger') bg = 'bg-accent-red';
+    if (type === 'warning') bg = 'bg-orange-500';
     if (type === 'info') bg = 'bg-text-secondary';
     if (type === 'destination') {
       bg = 'bg-text-primary';
@@ -48,12 +50,25 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
     });
   };
 
+  const getMarkerType = (category: string) => {
+    if (['Threat', 'Fire Safety'].includes(category)) return 'danger';
+    if (['Animal Hazard', 'Traffic', 'Obstacle'].includes(category)) return 'warning';
+    return 'info';
+  };
+
   const safeRouteCoords: [number, number][] = [
-    [47.0105, 28.8322], // User
-    [47.0115, 28.8335],
-    [47.0130, 28.8325],
-    [47.0140, 28.8310],
-    [47.0150, 28.8300]  // Destination
+    [47.0150, 28.8400], // User start
+    [47.0165, 28.8415],
+    [47.0180, 28.8405],
+    [47.0195, 28.8420],
+    [47.0210, 28.8435]  // Destination
+  ];
+
+  const altRouteCoords: [number, number][] = [
+    [47.0150, 28.8400],
+    [47.0160, 28.8440],
+    [47.0190, 28.8450], // Goes near hazards
+    [47.0210, 28.8435]
   ];
 
   const handleSelectDestination = () => {
@@ -73,7 +88,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
       >
         <MapContainer 
           center={position} 
-          zoom={15} 
+          zoom={13} 
           zoomControl={false}
           className="w-full h-full z-0"
         >
@@ -82,19 +97,40 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
             attribution=""
           />
           
-          <Marker position={[47.0105, 28.8322]} icon={createMarkerIcon('user')} />
-          
-          {/* Hazards */}
-          <Marker position={[47.0125, 28.8310]} icon={createMarkerIcon('danger')} />
-          <Marker position={[47.0145, 28.8335]} icon={createMarkerIcon('danger')} />
-          <Marker position={[47.0090, 28.8355]} icon={createMarkerIcon('danger')} />
+          {/* Mock Hazards */}
+          {MOCK_HAZARDS.map(hazard => (
+            <Marker 
+              key={hazard.id} 
+              position={[hazard.latitude, hazard.longitude]} 
+              icon={createMarkerIcon(getMarkerType(hazard.category))} 
+            />
+          ))}
 
-          {(isRouting || isNavigating) && (
+          {!isNavigating && (
+             <Marker position={position} icon={createMarkerIcon('user')} />
+          )}
+
+          {isRouting && !isNavigating && (
             <>
-              <Marker position={[47.0150, 28.8300]} icon={createMarkerIcon('destination')} />
+              <Marker position={[47.0210, 28.8435]} icon={createMarkerIcon('destination')} />
+              <Polyline 
+                positions={altRouteCoords} 
+                pathOptions={{ color: '#777777', weight: 4, opacity: 0.5, dashArray: '8, 8', lineCap: 'round', lineJoin: 'round' }} 
+              />
               <Polyline 
                 positions={safeRouteCoords} 
-                pathOptions={{ color: '#0095F6', weight: 4, opacity: 0.8, lineCap: 'round', lineJoin: 'round' }} 
+                pathOptions={{ color: '#0095F6', weight: 4, opacity: 0.9, lineCap: 'round', lineJoin: 'round' }} 
+              />
+            </>
+          )}
+
+          {isNavigating && (
+            <>
+              <Marker position={safeRouteCoords[1]} icon={createMarkerIcon('user')} />
+              <Marker position={[47.0210, 28.8435]} icon={createMarkerIcon('destination')} />
+              <Polyline 
+                positions={safeRouteCoords.slice(1)} 
+                pathOptions={{ color: '#0095F6', weight: 5, opacity: 1, lineCap: 'round', lineJoin: 'round' }} 
               />
             </>
           )}
@@ -126,10 +162,10 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 bg-bg-primary z-50 flex flex-col"
             >
-            <div 
-              className="px-4 pb-4 border-b border-border-subtle flex items-center gap-3"
-              style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}
-            >
+              <div 
+                className="px-4 pb-4 border-b border-border-subtle flex items-center gap-3"
+                style={{ paddingTop: 'calc(env(safe-area-inset-top) + 24px)' }}
+              >
                 <button onClick={() => setIsSearching(false)} className="p-2 -ml-2 text-text-primary">
                   <ChevronLeft size={24} strokeWidth={1.5} />
                 </button>
@@ -190,7 +226,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
 
         {/* UI Overlay - Route Info */}
         <AnimatePresence>
-          {isRouting && (
+          {isRouting && !isNavigating && (
             <motion.div 
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -205,39 +241,40 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
                       <ShieldCheck size={18} className="text-accent-blue" strokeWidth={2} />
                       Safe Route Generated
                     </h3>
-                    <p className="text-text-secondary text-[14px] mt-0.5">Avoiding 2 reported hazards</p>
+                    <p className="text-text-secondary text-[14px] mt-0.5">Avoiding 5 reported hazards</p>
                   </div>
-                  <div className="flex gap-2">
-                    <button 
-                      onClick={(e) => { e.stopPropagation(); setIsRouting(false); }}
-                      className="w-8 h-8 rounded-full bg-bg-secondary flex items-center justify-center text-text-secondary border border-border-subtle hover:bg-bg-primary transition-colors"
-                    >
-                      <X size={16} />
-                    </button>
-                    <button 
-                      onClick={(e) => { e.stopPropagation(); setIsRouting(false); setIsNavigating(true); }}
-                      className="w-8 h-8 rounded-full bg-accent-blue flex items-center justify-center text-white shadow-lg hover:bg-blue-600 transition-colors"
-                    >
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setIsRouting(false); }}
+                    className="w-8 h-8 rounded-full bg-bg-secondary flex items-center justify-center text-text-secondary border border-border-subtle hover:bg-bg-primary transition-colors"
+                  >
+                    <X size={16} />
+                  </button>
                 </div>
 
-                <div className="flex items-center gap-4 text-[13px] font-medium">
-                  <div className="bg-bg-secondary px-3 py-1.5 rounded-lg border border-border-subtle text-text-primary">
-                    18 min walk
+                <div className="flex justify-between items-center mt-4">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2 text-[13px] font-medium text-text-primary">
+                      <div className="w-2 h-2 rounded-full bg-accent-blue" />
+                      Safe Route (18 min)
+                    </div>
+                    <div className="flex items-center gap-2 text-[13px] font-medium text-text-secondary opacity-70">
+                      <div className="w-2 h-2 rounded-full bg-text-secondary" />
+                      Alt Route (15 min) - Hazards
+                    </div>
                   </div>
-                  <div className="bg-bg-secondary px-3 py-1.5 rounded-lg border border-border-subtle flex items-center gap-1.5 text-accent-red">
-                    <AlertTriangle size={14} />
-                    Detour active
-                  </div>
+                  <button 
+                    onClick={() => setIsNavigating(true)}
+                    className="px-6 py-2.5 rounded-xl bg-text-primary text-bg-primary font-bold text-[15px] hover:opacity-90 transition-opacity"
+                  >
+                    Start
+                  </button>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* UI Overlay - Navigation Info */}
+        {/* UI Overlay - Active Navigation Top Panel */}
         <AnimatePresence>
           {isNavigating && (
             <motion.div 
@@ -256,7 +293,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
                   <div className="text-text-secondary text-sm">Towards safe destination</div>
                 </div>
                 <button 
-                  onClick={(e) => { e.stopPropagation(); setIsNavigating(false); }}
+                  onClick={(e) => { e.stopPropagation(); setIsNavigating(false); setIsRouting(false); }}
                   className="px-4 py-2 rounded-xl bg-accent-red/20 text-accent-red font-semibold text-sm hover:bg-accent-red/30 transition-colors"
                 >
                   End

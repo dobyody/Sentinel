@@ -1,20 +1,43 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MoreHorizontal, Heart, MessageCircle, Send, AlertTriangle, Moon, Shield, ChevronLeft } from 'lucide-react'
+import { MoreHorizontal, Heart, MessageCircle, Send, AlertTriangle, Moon, Shield, ChevronLeft, Dog, Construction } from 'lucide-react'
+import { MOCK_HAZARDS } from '../data/mockHazards'
 
-// MOCK DATA
-const MOCK_NEARBY = [
-  { id: 1, author: 'Anonymous #812', reports: 5, time: '2m', tag: { label: 'Aggressive Group', icon: <AlertTriangle size={12} className="text-accent-red" /> }, content: 'Group of aggressive individuals near the station. Avoid the south entrance. Security has been notified but please take a detour.', likes: 24, comments: 3 },
-  { id: 2, author: 'Citizen #492', reports: 0, time: '15m', tag: { label: 'No Lighting', icon: <Moon size={12} className="text-text-secondary" /> }, content: 'Streetlights are completely out on Westside Bridge. Very dark and unsafe right now, especially for pedestrians. Flashlights needed.', likes: 112, comments: 14, hasImage: true },
-  { id: 3, author: 'Anonymous #112', reports: 12, time: '32m', tag: { label: 'Blocked Path', icon: <AlertTriangle size={12} className="text-accent-blue" /> }, content: 'Construction scaffolding collapsed partially on 5th Ave sidewalk. Path is completely impassable for wheelchairs or strollers.', likes: 45, comments: 2 },
-  { id: 4, author: 'Citizen #991', reports: 2, time: '1h', tag: { label: 'Suspicious Activity', icon: <AlertTriangle size={12} className="text-orange-500" /> }, content: 'Someone checking car handles along Maple Street. Keep vehicles locked.', likes: 89, comments: 21 },
-];
+// Transform raw hazard data into feed-ready post data
+const transformHazardToPost = (hazard: any) => {
+  // Deterministic random generation based on ID
+  const authorId = (hazard.id * 17) % 999;
+  const isCitizen = hazard.id % 2 === 0;
+  const reportsCount = (hazard.id * 7) % 20;
+  const likes = (hazard.id * 13) % 250;
+  const commentsCount = (hazard.id * 3) % 45;
+  const minutesAgo = (hazard.id * 5) % 60;
+  
+  let icon = <AlertTriangle size={12} className="text-orange-500" />;
+  
+  
+  if (hazard.category === 'Threat') { icon = <AlertTriangle size={12} className="text-accent-red" />;  }
+  else if (hazard.category === 'Lighting') { icon = <Moon size={12} className="text-text-secondary" />;  }
+  else if (hazard.category === 'Animal Hazard') { icon = <Dog size={12} className="text-yellow-500" />;  }
+  else if (hazard.category === 'Obstacle') { icon = <Construction size={12} className="text-accent-blue" />;  }
 
-const MOCK_TRENDING = [
-  { id: 101, author: 'Anonymous #999', reports: 45, time: '1h', tag: { label: 'Major Roadblock', icon: <AlertTriangle size={12} className="text-orange-500" /> }, content: 'Central avenue is completely blocked off due to a major water main break. Traffic is being rerouted. Avoid the area if possible.', likes: 450, comments: 89 },
-  { id: 102, author: 'Citizen #102', reports: 0, time: '2h', tag: { label: 'Stray Dogs', icon: <AlertTriangle size={12} className="text-yellow-500" /> }, content: 'Pack of stray dogs acting aggressively near the alley by the park. Had to turn around. Avoid walking pets here tonight.', likes: 256, comments: 45 },
-  { id: 103, author: 'Anonymous #33', reports: 8, time: '5h', tag: { label: 'Protest', icon: <AlertTriangle size={12} className="text-accent-blue" /> }, content: 'Large peaceful gathering moving towards the square. Heavy pedestrian traffic, expect delays if walking through the center.', likes: 890, comments: 112 }
-];
+  return {
+    id: hazard.id,
+    author: isCitizen ? `Citizen #${authorId}` : `Anonymous #${authorId}`,
+    reports: reportsCount,
+    time: `${minutesAgo}m`,
+    tag: { label: hazard.category, icon },
+    content: `${hazard.description} (${hazard.location})`,
+    likes,
+    comments: commentsCount,
+    hasImage: hazard.id % 5 === 0 // 1 in 5 has an image
+  };
+};
+
+const ALL_POSTS = MOCK_HAZARDS.map(transformHazardToPost);
+// Split data for demo
+const POSTS_NEARBY = ALL_POSTS.slice(0, 25);
+const POSTS_TRENDING = ALL_POSTS.slice(25, 50).sort((a, b) => b.likes - a.likes);
 
 export default function SocialFeed() {
   const [activeTab, setActiveTab] = useState<'nearby' | 'trending'>('nearby');
@@ -71,7 +94,7 @@ export default function SocialFeed() {
             transition={{ duration: 0.2 }}
             className="flex flex-col"
           >
-            {(activeTab === 'nearby' ? MOCK_NEARBY : MOCK_TRENDING).map((post) => (
+            {(activeTab === 'nearby' ? POSTS_NEARBY : POSTS_TRENDING).map((post) => (
               <FeedCard 
                 key={post.id}
                 {...post} 
@@ -124,7 +147,7 @@ export default function SocialFeed() {
                     <span className="font-semibold text-text-primary text-[14px]">Citizen #102</span>
                     <span className="text-text-secondary text-[13px] font-light">1m</span>
                   </div>
-                  <p className="text-text-primary text-[14px] font-light">Can confirm, just passed by there. It's totally dark. Be careful!</p>
+                  <p className="text-text-primary text-[14px] font-light">Can confirm, just passed by there. Be careful!</p>
                 </div>
               </div>
               <div className="px-4 py-4 border-b border-border-subtle flex gap-3 pl-8">
@@ -173,7 +196,7 @@ function FeedCard({ author, reports, time, tag, content, likes, comments, hasIma
         {/* Avatar Area */}
         <div className="flex flex-col items-center">
           <div className="w-10 h-10 rounded-full bg-bg-tertiary border border-border-subtle flex items-center justify-center font-medium text-text-primary flex-shrink-0">
-            {author.charAt(0)}
+            {author.replace(/[^a-zA-Z]/g, '').charAt(0)}
           </div>
           {!isDetail && <div className="w-[1.5px] h-full bg-border-subtle mt-2 mb-1" />}
         </div>
