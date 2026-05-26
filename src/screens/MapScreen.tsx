@@ -102,7 +102,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
 
         {/* UI Overlay - Search Bar */}
         {!isRouting && !isSearching && !isNavigating && (
-          <div className="absolute top-12 left-4 right-4 z-10">
+          <div className="absolute top-6 left-4 right-4 z-10">
             <div 
               className="bg-bg-tertiary/90 backdrop-blur-xl border border-border-subtle rounded-2xl px-4 py-3 flex items-center gap-3 shadow-lg"
               onClick={() => setIsSearching(true)}
@@ -123,7 +123,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="absolute inset-0 bg-bg-primary z-50 flex flex-col"
             >
-              <div className="pt-12 px-4 pb-4 border-b border-border-subtle flex items-center gap-3">
+              <div className="pt-6 px-4 pb-4 border-b border-border-subtle flex items-center gap-3">
                 <button onClick={() => setIsSearching(false)} className="p-2 -ml-2 text-text-primary">
                   <ChevronLeft size={24} strokeWidth={1.5} />
                 </button>
@@ -238,7 +238,7 @@ export default function MapScreen({ activeTab }: MapScreenProps) {
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -50, opacity: 0 }}
-              className="absolute top-12 left-4 right-4 z-10"
+              className="absolute top-6 left-4 right-4 z-10"
             >
               <div className="bg-bg-tertiary/90 backdrop-blur-xl border border-border-subtle rounded-2xl p-4 shadow-lg flex justify-between items-center">
                 <div>

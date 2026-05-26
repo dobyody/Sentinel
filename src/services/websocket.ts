@@ -3,7 +3,7 @@
 class WebSocketService {
   private ws: WebSocket | null = null;
 
-  connect(token: string) {
+  connect(_token: string) {
     // const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:3000';
     // this.ws = new WebSocket(`${WS_URL}?token=${token}`);
     
