@@ -89,7 +89,7 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
           <div className="w-10" /> {/* Spacer */}
         </div>
 
-        <div className="p-4 relative min-h-[400px]">
+        <div className="p-4 relative min-h-[460px]">
           <AnimatePresence mode="wait">
             
             {step === 'category' && (
@@ -127,7 +127,7 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
                 className="flex flex-col h-full absolute inset-4"
               >
                 <p className="text-text-secondary text-[13px] mb-2 text-center">Drag map to adjust pin</p>
-                <div className="w-full h-48 rounded-2xl bg-bg-tertiary border border-border-subtle relative overflow-hidden mb-4 z-0">
+                <div className="w-full h-56 rounded-2xl bg-bg-tertiary border border-border-subtle relative overflow-hidden mb-4 z-0">
                   <MapContainer 
                     center={currentPosition} 
                     zoom={15} 
@@ -154,7 +154,7 @@ export default function CreateReport({ onClose }: { onClose: () => void }) {
                   className="w-full h-16 bg-bg-tertiary border border-border-subtle rounded-xl p-3 outline-none text-text-primary text-[14px] placeholder:text-text-secondary resize-none mb-4"
                 />
 
-                <div className="mt-auto flex gap-3 pb-2">
+                <div className="mt-auto flex gap-3 pb-6">
                   <button className="p-4 rounded-xl bg-bg-tertiary border border-border-subtle text-text-primary flex items-center justify-center hover:bg-bg-secondary transition-colors">
                     <ImageIcon size={20} strokeWidth={1.5} />
                   </button>
