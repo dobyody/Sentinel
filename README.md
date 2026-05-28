@@ -7,7 +7,7 @@ With an ultra-minimalist, pitch-black "Threads-like" aesthetic, Sentinel focuses
 ## 🌟 Core Features
 
 - **Safe Routing & Live Map:** Interactive map powered by Leaflet with CartoDB Dark Matter tiles. Generates safe routes avoiding reported dangers. Fully integrates with the **Telegram LocationManager API** (with HTML5 fallback) to track live GPS position and update navigation seamlessly.
-- **Interactive Hazard Preview:** Clicking on any hazard marker on the map opens a smooth, animated overlay with incident details, optional photos, and a quick "Route Around" action.
+- **Interactive Hazard Preview:** Clicking on any hazard marker on the map opens a smooth, animated overlay with incident details, optional photos, and a quick "Route Around" action. The selected marker scales up and pulses to provide clear visual focus.
 - **3-Tap Reporting Flow:** An ultra-fast mechanism to report incidents while on the move. Uses clear, color-coded categories and an interactive mini-map for pinning exact hazard locations via GPS:
   - 🔴 **Threat** (Harassment, aggressive behavior)
   - 🟠 **Infrastructure Hazard** (Unlit street, open manhole)
@@ -49,7 +49,7 @@ With an ultra-minimalist, pitch-black "Threads-like" aesthetic, Sentinel focuses
 - **Vibe:** Cinematic, dark, minimal, tactile.
 - **Colors:** Pitch black, muted graphite, with stark, meaningful accent colors for hazards.
 - **Typography:** System fonts (Inter, SF Pro) with clean hierarchies.
-- **Mobile First:** Strict adherence to mobile Viewport standards (disabling zoom, elastic scroll, optimizing iOS WebKit blur effects).
+- **Mobile First:** Strict adherence to mobile Viewport standards (disabling zoom, elastic scroll, optimizing iOS WebKit blur effects, avoiding sub-pixel rendering bugs).
 
 ## 📄 License
 MIT License
