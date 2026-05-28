@@ -1,0 +1,96 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String          @id @default(uuid())
+  telegramId       String          @unique
+  nickname         String
+  reportsCount     Int             @default(0)
+  peopleHelpedCount Int            @default(0)
+  isTrusted        Boolean         @default(false)
+  createdAt        DateTime        @default(now())
+
+  reports          HazardReport[]
+  comments         Comment[]
+  upvotes          Upvote[]
+  savedLocations   SavedLocation[]
+
+  @@index([telegramId])
+}
+
+model HazardReport {
+  id            String         @id @default(uuid())
+  userId        String
+  category      Category
+  latitude      Float
+  longitude     Float
+  description   String?
+  photoUrl      String?
+  upvotes       Int            @default(0)
+  commentsCount Int            @default(0)
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  expiresAt     DateTime
+
+  user          User           @relation(fields: [userId], references: [id])
+  comments      Comment[]
+  upvoteRecords Upvote[]
+
+  @@index([latitude, longitude])
+  @@index([isActive, expiresAt])
+  @@index([userId])
+}
+
+model Comment {
+  id        String       @id @default(uuid())
+  reportId  String
+  userId    String
+  content   String
+  createdAt DateTime     @default(now())
+
+  report    HazardReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  user      User         @relation(fields: [userId], references: [id])
+
+  @@index([reportId])
+}
+
+model Upvote {
+  id        String       @id @default(uuid())
+  reportId  String
+  userId    String
+  createdAt DateTime     @default(now())
+
+  report    HazardReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  user      User         @relation(fields: [userId], references: [id])
+
+  @@unique([reportId, userId])
+  @@index([reportId])
+}
+
+model SavedLocation {
+  id        String   @id @default(uuid())
+  userId    String
+  label     String
+  latitude  Float
+  longitude Float
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+enum Category {
+  THREAT
+  INFRASTRUCTURE
+  ANIMAL
+  OBSTACLE
+}
