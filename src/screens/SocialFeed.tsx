@@ -45,7 +45,7 @@ export default function SocialFeed() {
 
   const handleShare = (post: any) => {
     const text = encodeURIComponent(`Sentinel Alert: ${post.tag?.label} - ${post.content}`);
-    const url = encodeURIComponent('https://sentinel.app/p/' + post.id);
+    const url = encodeURIComponent('https://sentinel.invata.xyz/p/' + post.id);
     window.location.href = `https://t.me/share/url?url=${url}&text=${text}`;
   };
 
